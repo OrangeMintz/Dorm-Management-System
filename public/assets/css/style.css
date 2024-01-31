@@ -773,6 +773,20 @@ h6 {
 /*--------------------------------------------------------------
 # Dashboard
 --------------------------------------------------------------*/
+
+/* Greetings */
+.header-title h1 {
+  font-size: 42px;
+  font-weight: 600;
+  color: #012970;
+  font-family: "Poppins", sans-serif;
+}
+
+.header-title span {
+  font-weight: 100;
+  color: #012970;
+}
+
 /* Filter dropdown */
 .dashboard .filter {
   position: absolute;
