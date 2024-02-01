@@ -378,7 +378,12 @@ h6 {
 }
 
 .logo img {
-  max-height: 26px;
+  max-height: 32px;
+  /* margin-right: 6px; */
+}
+
+.logo-login img {
+  max-height: 50px;
   /* margin-right: 6px; */
 }
 
@@ -391,18 +396,19 @@ h6 {
 
 .header {
   transition: all 0.5s;
-  z-index: 997;
+  z-index: 2;
   height: 60px;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
-  padding-left: 20px;
+  padding-left: 32px;
   /* Toggle Sidebar Button */
   /* Search Bar */
 }
 
 .header .toggle-sidebar-btn {
   font-size: 32px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
+  /* margin-left: 28vh; */
   cursor: pointer;
   color: #012970;
 }
@@ -612,19 +618,41 @@ h6 {
 --------------------------------------------------------------*/
 .sidebar {
   position: fixed;
-  top: 60px;
+  top: 0;
   left: 0;
   bottom: 0;
   width: 300px;
   z-index: 996;
   transition: all 0.3s;
-  padding: 20px;
+  padding: 10px 20px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
   background-color: #fff;
 }
+
+.sidebar .toggle-sidebar-btn {
+  font-size: 26px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: #012970;
+  position: absolute;
+  right: 0;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo {
+  max-width: 50%;
+  height: auto;
+  margin: 3vh auto;
+}
+
 
 @media (max-width: 1199px) {
   .sidebar {

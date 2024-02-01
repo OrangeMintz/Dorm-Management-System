@@ -38,14 +38,21 @@
     el.addEventListener('scroll', listener)
   }
 
-  /**
-   * Sidebar toggle
-   */
-  if (select('.toggle-sidebar-btn')) {
-    on('click', '.toggle-sidebar-btn', function(e) {
-      select('body').classList.toggle('toggle-sidebar')
-    })
-  }
+/**
+ * Sidebar toggle
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  // Select all elements with the class 'toggle-sidebar-btn'
+  var toggleButtons = document.querySelectorAll('.toggle-sidebar-btn');
+
+  // Add click event listeners to all toggle buttons
+  toggleButtons.forEach(function(button) {
+    button.addEventListener('click', function(e) {
+      document.body.classList.toggle('toggle-sidebar');
+    });
+  });
+});
+
 
   /**
    * Search bar toggle
