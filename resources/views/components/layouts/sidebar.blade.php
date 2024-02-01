@@ -1,5 +1,12 @@
-<!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
+
+    <i class="bi bi-x-lg toggle-sidebar-btn d-block d-sm-block d-md-block d-lg-block d-xl-none"></i>
+
+    <div class="sidebar-header">
+        <a href="#">
+            <img src="/assets/img/logo.png" class="sidebar-logo" alt="" />
+        </a>
+    </div>
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
@@ -234,4 +241,4 @@
 
     </ul>
 
-</aside><!-- End Sidebar-->
+</aside>
