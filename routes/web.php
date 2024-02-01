@@ -1,27 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\Dashboard;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('login');
+Route::get('/',function(){
+    return redirect('/login');
 });
 
-Route::get('/register', function () {
-    return view('register');
+Route::group(['middleware'=>"web"],function(){
+    Route::get('/login', [AuthManager::class, 'login'])->name(name: 'login')->middleware('guest');
+    Route::post('/login', [AuthManager::class, 'loginPost'])->name(name: 'loginPost')->middleware('guest');
+    Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::group(['middleware'=>"web"],function(){
+    Route::get('/dashboard', [Dashboard::class, 'viewDashboard'])->middleware('auth');
 });
 
