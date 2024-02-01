@@ -22,7 +22,7 @@ class AuthManager extends Controller
         if(Auth::attempt($credentials)){
             return redirect()->intended('dashboard');
         }else{
-            return redirect(route('login'))->with("error", "Login details are valid!");
+            return redirect(route('login'))->with("error", "Invalid username or password!");
         }
     }
 
