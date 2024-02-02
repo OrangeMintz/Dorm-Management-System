@@ -26,7 +26,37 @@
                             {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->username }}</td>
-                        <td><span class="badge rounded-pill bg-danger">{{ $user->position }}</span>
+                        <td>
+                            @switch($user->position)
+                                @case('super admin')
+                                    <span class="badge rounded-pill bg-danger">
+                                        {{ $user->position }}
+                                    </span>
+                                @break
+
+                                @case('admin')
+                                    <span class="badge rounded-pill bg-warning text-black">
+                                        {{ $user->position }}
+                                    </span>
+                                @break
+
+                                @case('boarder')
+                                    <span class="badge rounded-pill bg-secondary">
+                                        {{ $user->position }}
+                                    </span>
+                                @break
+
+                                @case('staff')
+                                    <span class="badge rounded-pill bg-info text-black">
+                                        {{ $user->position }}
+                                    </span>
+                                @break
+
+                                @default
+                                    <span class="badge rounded-pill bg-secondary">
+                                        {{ $user->position }}
+                                    </span>
+                            @endswitch
                         </td>
                         <td>{{ $user->phone_number }}</td>
                         <td>{{ $user->birth_date }}</td>
