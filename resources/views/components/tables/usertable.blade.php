@@ -14,7 +14,7 @@
                     <th scope="col">Birthdate</th>
                     <th scope="col">Created At</th>
                     <th scope="col">Updated At</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,15 +28,19 @@
                     <td>02-05-2003</td>
                     <td>02-02-2024</td>
                     <td>02-05-2024</td>
-                    <td>
-                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#Modal">
-                            Edit
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#Modal">
-                            Delete
-                        </button>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#Modal">
+                                Edit
+                            </button>
+                            <div class="mx-1"></div> <!-- Add space between buttons -->
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#Modal">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
