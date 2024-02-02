@@ -5,7 +5,6 @@
 @include('layouts.head')
 <!-- End Header -->
 
-
 <body>
 
     {{-- ======= Header ======= --}}
@@ -39,17 +38,14 @@
             <div class="row">
 
                 {{-- Left side columns --}}
-                <div class="col-lg-12">
-                    <div class="row">
+                <div class="row">
 
-                        {{-- User Table --}}
-                        @include('components.tables.usertable')
-                        {{-- End User Table --}}
-
-
-                    </div>
+                    {{-- User Table --}}
+                    @include('components.tables.usertable')
+                    {{-- End User Table --}}
                 </div>
-                {{-- End Left side columns --}}
+            </div>
+            {{-- End Left side columns --}}
 
             </div>
         </section>
