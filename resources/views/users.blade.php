@@ -46,6 +46,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Table with hoverable rows</h5>
 
+                                <!-- Table with hoverable rows -->
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -61,17 +62,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Taler Ni Gacus</td>
-                                            <td>email@gamil.com</td>
-                                            <td>annonymous</td>
-                                            <td><span class="badge rounded-pill bg-danger">Super Admin</span></td>
-                                            <td>09123456789</td>
-                                            <td>02-05-2003</td>
-                                            <td>02-02-2024</td>
-                                            <td>02-05-2024</td>
-                                        </tr>
+                                        @foreach ($users as $user)
+                                            <tr>
+                                                <th scope="row">{{ $user->id }}</th>
+                                                <td>{{ $user->first_name }} {{ $user->middle_name }}
+                                                    {{ $user->last_name }}</td>
+                                                <td>{{ $user->email }}</td>
+                                                <td>{{ $user->username }}</td>
+                                                <td><span
+                                                        class="badge rounded-pill bg-danger">{{ $user->position }}</span>
+                                                </td>
+                                                <td>{{ $user->phone_number }}</td>
+                                                <td>{{ $user->birth_date }}</td>
+                                                <td>{{ $user->created_at }}</td>
+                                                <td>{{ $user->updated_at }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <!-- End Table with hoverable rows -->

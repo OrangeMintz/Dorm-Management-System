@@ -6,53 +6,54 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3">
+                <form class="row g-3" action="{{ route('users.post') }}" method="POST">
+                    @csrf
                     <div class="col-md-4">
                         <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first_name">
+                        <input type="text" class="form-control" name="first_name">
                     </div>
                     <div class="col-md-4">
                         <label for="middle_name" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" id="middle_name">
+                        <input type="text" class="form-control" name="middle_name">
                     </div>
                     <div class="col-md-4">
                         <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="last_name">
+                        <input type="text" class="form-control" name="last_name">
                     </div>
                     <div class="col-md-4">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control" name="email">
                     </div>
                     <div class="col-md-4">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="@yourusername">
+                        <input type="text" class="form-control" name="username" placeholder="@yourusername">
                     </div>
                     <div class="col-md-4">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" class="form-control" name="password">
                     </div>
                     <div class="col-5">
                         <label for="phone_number" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="phone_number" placeholder="09123456789">
+                        <input type="number" class="form-control" name="phone_number" placeholder="09123456789">
                     </div>
                     <div class="col-5">
                         <label for="birth_date" class="form-label">Birthdate</label>
-                        <input type="date" class="form-control" id="birth_date">
+                        <input type="date" class="form-control" name="birth_date">
                     </div>
                     <div class="col-md-2">
                         <label for="inputState" class="form-label">Role</label>
-                        <select id="inputState" class="form-select">
+                        <select id="inputState" class="form-select" name="position">
                             <option selected="" disabled>Choose...</option>
-                            <option>Super Admin</option>
-                            <option>Admin</option>
-                            <option>Boarder</option>
-                            <option>Utility Personel</option>
-                            <option>Canteen Staff</option>
+                            <option value="super admin">Super Admin</option>
+                            <option value="admin">Admin</option>
+                            <option value="boarder">Boarder</option>
+                            <option value="staff">Utility Personel</option>
+                            <option value="staff">Canteen Staff</option>
                         </select>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="button" class="btn btn-primary">Confirm</button>
+                        <button type="submit" class="btn btn-primary">Confirm</button>
                     </div>
                 </form>
             </div>
