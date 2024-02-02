@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- ======= Header ======= -->
-@include('components.layouts.head')
+@include('layouts.head')
 <!-- End Header -->
 
 <body>
