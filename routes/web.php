@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\Dashboard;
 
+Route::get('/register', function () {
+    return view('register');
+});
 
 Route::get('/',function(){
     return redirect('/login');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
 
 Route::group(['middleware'=>"web"],function(){
     Route::get('/login', [AuthManager::class, 'login'])->name(name: 'login')->middleware('guest');
@@ -21,6 +21,10 @@ Route::group(['middleware'=>"web"],function(){
 
 Route::group(['middleware'=>"web"],function(){
     Route::get('/dashboard', [Dashboard::class, 'viewDashboard'])->middleware('auth');
+});
+
+Route::get('/users', function () {
+    return view('users');
 });
 
 
