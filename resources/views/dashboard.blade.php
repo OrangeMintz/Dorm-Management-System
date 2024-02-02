@@ -2,18 +2,18 @@
 <html lang="en">
 
 <!-- ======= Header ======= -->
-@include('components.layouts.head')
+@include('layouts.head')
 <!-- End Header -->
 
 
 <body>
 
     <!-- ======= Header ======= -->
-    @include('components.layouts.header')
+    @include('layouts.header')
     <!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
-    @include('components.layouts.sidebar')
+    @include('layouts.sidebar')
     <!-- End Sidebar -->
 
     <main id="main" class="main">
@@ -664,7 +664,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    @include('components.layouts.footer')
+    @include('layouts.footer')
 
     <!-- End Footer -->
 
