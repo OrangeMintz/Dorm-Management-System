@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\Dashboard;
-
+use App\Http\Controllers\GoogleController;
 
 Route::get('/',function(){
     return redirect('/login');
@@ -13,9 +13,15 @@ Route::get('/register', function () {
     return view('register');
 });
 
+Route::get('/users', function () {
+    return view('users');
+});
+
 Route::group(['middleware'=>"web"],function(){
     Route::get('/login', [AuthManager::class, 'login'])->name(name: 'login')->middleware('guest');
     Route::post('/login', [AuthManager::class, 'loginPost'])->name(name: 'loginPost')->middleware('guest');
+    Route::get('/google', [GoogleController::class, 'loginWithGoogle'])->name('google');
+    Route::any('/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
     Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
 });
 
