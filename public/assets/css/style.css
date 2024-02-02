@@ -725,9 +725,9 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #FC6736;
   transition: 0.3;
-  background: #f6f9ff;
+  background: #ffeae3;
   padding: 10px 15px;
   border-radius: 4px;
 }
@@ -735,7 +735,7 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #FC6736;
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -748,12 +748,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #FC6736;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color: #FC6736;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -791,11 +791,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: #4154f1;
+  color: #FC6736;
 }
 
 .sidebar-nav .nav-content a.active i {
-  background-color: #4154f1;
+  background-color: #FC6736;
 }
 
 /*--------------------------------------------------------------
