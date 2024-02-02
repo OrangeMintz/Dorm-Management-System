@@ -21,10 +21,6 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/users', function () {
-    return view('users');
-});
-
 Route::group(['middleware' => "web"], function () {
     Route::get('/login', [AuthManager::class, 'login'])->name(name: 'login')->middleware('guest');
     Route::post('/login', [AuthManager::class, 'loginPost'])->name(name: 'loginPost')->middleware('guest');
