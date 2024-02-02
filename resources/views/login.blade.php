@@ -83,7 +83,7 @@
                                             <p class="text-center small mute divider">OR</p>
                                         </div>
                                         <div class="col-12">
-                                            <a href="#" class="btn btn-outline-primary w-100"><i
+                                            <a href="{{ route('google') }}" class="btn btn-outline-primary w-100"><i
                                                     class="bi bi-google me-2"></i> Login with
                                                 Google</a>
                                         </div>
