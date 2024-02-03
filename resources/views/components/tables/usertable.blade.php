@@ -2,7 +2,7 @@
     <div class="card-body table-responsive">
         <h5 class="card-title">User Management</h5>
 
-        <table class="table table-hover">
+        <table class="table table-hover datatable ">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -64,11 +64,11 @@
                         <td>{{ $user->updated_at }}</td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#Modal">
+                                <a href="{{ route('users.edit', ['id' => $user->id]) }}" class="btn btn-warning btn-sm">
                                     Edit
-                                </button>
-                                <div class="mx-1"></div> <!-- Add space between buttons -->
+                                </a>
+                                                                
+                                <div class="mx-1"></div>
                                 <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#Modal">
                                     Delete
