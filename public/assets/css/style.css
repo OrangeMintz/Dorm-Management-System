@@ -1011,6 +1011,25 @@ h6 {
   border: 0;
 }
 
+.datatable-input {
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #ebeef4;
+  font-size: 14px;
+  color: #012970;
+  margin-bottom: 10px;
+}
+
+.datatable-selector {
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #ebeef4;
+  font-size: 14px;
+  color: #012970;
+  margin-bottom: 10px;
+
+}
+
 .dashboard .recent-sales .dataTable-top {
   padding: 0 0 10px 0;
 }
