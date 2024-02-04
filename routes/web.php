@@ -30,7 +30,7 @@ Route::group(['middleware' => "web"], function () {
     Route::get('/dashboard', [Dashboard::class, 'viewDashboard'])->middleware('auth');
 });
 
-Route::post('/users', [AuthManager::class, 'usersPost'])->name(name: 'users.post');
+Route::post('/users', [UsersController::class, 'usersPost'])->name(name: 'users.post');
 Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
 
