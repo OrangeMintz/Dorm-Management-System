@@ -27,6 +27,7 @@ class GoogleController extends Controller
 
                 //authenticates user login
                 auth()->login($userModel);
+                session(['user' => $userModel]);
                 return redirect()->intended('dashboard');
             }else{
                 return redirect(route('login'))->with("error", "Unregistered account");

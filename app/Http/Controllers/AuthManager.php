@@ -24,6 +24,9 @@ class AuthManager extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            // dd($user.attributes);
+            session(['user' => $user]);
             return redirect()->intended('dashboard');
         } else {
             return redirect(route('login'))->with("error", "Invalid username or password!");

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="pagetitle">
-    <h1>Hello, Super Admin!👋</h1>
+    <h1>Hello, {{ session('user')->first_name }}!👋</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
