@@ -34,6 +34,10 @@ Route::post('/users', [UsersController::class, 'usersPost'])->name(name: 'users.
 Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
 
+Route::get('/tenants', function () {
+    return view('tenants');
+});
+
 Route::get('/dormitories', function () {
     return view('dorm');
 });

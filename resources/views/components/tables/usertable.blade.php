@@ -49,8 +49,14 @@
                                         </span>
                                     @break
     
-                                    @case('admin')
+                                    @case('tenant admin')
                                         <span class="badge rounded-pill bg-warning text-black">
+                                            {{ $user->position }}
+                                        </span>
+                                    @break
+
+                                    @case('dorm admin')
+                                        <span class="badge rounded-pill bg-info">
                                             {{ $user->position }}
                                         </span>
                                     @break
@@ -61,7 +67,13 @@
                                         </span>
                                     @break
     
-                                    @case('staff')
+                                    @case('utility staff')
+                                        <span class="badge rounded-pill bg-info text-black">
+                                            {{ $user->position }}
+                                        </span>
+                                    @break
+
+                                    @case('canteen staff')
                                         <span class="badge rounded-pill bg-info text-black">
                                             {{ $user->position }}
                                         </span>

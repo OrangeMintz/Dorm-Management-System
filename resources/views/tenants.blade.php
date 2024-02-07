@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pageTitle', 'Dorm Management')
+@section('pageTitle', 'Tenants Management')
 @section('content')
     <div class="pagetitle">
         <nav>
@@ -13,7 +13,7 @@
 
     <div class="mt-3 mb-3">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-            Add dormitory
+            Add Tenant
         </button>
     </div>
     @include('components.modals.dormmodal')
