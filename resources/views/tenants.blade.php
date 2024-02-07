@@ -24,10 +24,10 @@
             {{-- Left side columns --}}
             {{-- <div class="col-lg-8"> --}}
                 <div class="row">
+                    @include('components.stats.tenantsstats')
 
-                    {{-- User Table --}}
+
                     {{-- @include('components.tables.usertable') --}}
-                    {{-- End User Table --}}
                 </div>
                 
             {{-- </div> --}}
