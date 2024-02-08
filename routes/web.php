@@ -26,14 +26,20 @@ Route::group(['middleware' => "web"], function () {
     Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
 });
 
-Route::group(['middleware' => "web"], function () {
-    Route::get('/dashboard', [Dashboard::class, 'viewDashboard'])->middleware('auth');
-});
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'web'], function () {
+        Route::get('/dashboard', [Dashboard::class, 'viewDashboard']);
+    });
 
-Route::post('/users', [AuthManager::class, 'usersPost'])->name(name: 'users.post');
-Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
-Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::post('/users', [UsersController::class, 'usersPost'])->name('users.post');
+    Route::put('/users/{id}', [UsersController::class, 'usersPut'])->name('users.put');
+    Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
 
-Route::get('/dormitories', function () {
-    return view('dorm');
+    Route::get('/tenants', function () {
+        return view('tenants');
+    });
+
+    Route::get('/dormitories', function () {
+        return view('dorm');
+    });
 });

@@ -10,7 +10,7 @@
     </div>
 
     <!-- ======= Header ======= -->
-    @include('layouts.header')
+    @include('layouts.header', ['user' => session('user')])
 
     <!-- Sidebar content -->
     @include('layouts.sidebar')

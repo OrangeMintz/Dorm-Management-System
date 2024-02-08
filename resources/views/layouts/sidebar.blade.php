@@ -29,6 +29,13 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link {{ request()->is('tenants') ? '' : 'collapsed' }}" href="{{ url('/tenants') }}">
+                <i class="bi bi-house"></i>
+                <span>Tenants Management</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link {{ request()->is('dormitories') ? '' : 'collapsed' }}" href="{{ url('/dormitories') }}">
                 <i class="bi bi-house"></i>
                 <span>Dorm Management</span>

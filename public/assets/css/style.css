@@ -221,6 +221,22 @@ h6 {
   }
 }
 
+/* Tenant Cards */
+.card-link .lab-card {
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background-color and transform properties */
+}
+
+.card-link:hover .lab-card {
+  background-color: #716ad11f; /* Change the background color on hover */
+  transform: translateY(-5px); /* Apply a translateY transformation for the floating effect */
+}
+.card-link a {
+  text-decoration: none;
+  color: #012970;
+}
+
+
 /* Light Backgrounds */
 .bg-primary-light {
   background-color: #cfe2ff;
@@ -283,6 +299,19 @@ h6 {
 
 .card-title span {
   color: #899bbd;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-badge {
+  padding: 20px 0 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #012970;
+  font-family: "Poppins", sans-serif;
+}
+.card-badge span {
+  color: #ffffff;
   font-size: 14px;
   font-weight: 400;
 }
@@ -1009,6 +1038,25 @@ h6 {
 
 .dashboard .recent-sales .table thead th {
   border: 0;
+}
+
+.datatable-input {
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #ebeef4;
+  font-size: 14px;
+  color: #012970;
+  margin-bottom: 10px;
+}
+
+.datatable-selector {
+  padding: 10px 15px;
+  border-radius: 4px;
+  border: 1px solid #ebeef4;
+  font-size: 14px;
+  color: #012970;
+  margin-bottom: 10px;
+
 }
 
 .dashboard .recent-sales .dataTable-top {
