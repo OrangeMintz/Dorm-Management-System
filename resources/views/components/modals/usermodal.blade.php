@@ -53,6 +53,7 @@
                             <option value="canteen staff">Canteen Staff</option>
                         </select>
                     </div>
+                </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-secondary">Reset</button>
                         <button type="submit" class="btn btn-primary">Confirm</button>
@@ -74,7 +75,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('users.put', ['id' => $user->id]) }}" method="POST">
+                <form class="row g-3" action="{{ route('users.put', ['id' => $user->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <!-- Input fields for user data -->
