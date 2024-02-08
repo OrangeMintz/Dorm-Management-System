@@ -16,7 +16,7 @@
 
         <div class="card-body">
             <h5 class="card-title">User Management</h5>
-    
+
             <div class="table-responsive">
 
                 <table class="table table-hover datatable">
@@ -34,7 +34,7 @@
                             <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
-        
+
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
@@ -50,37 +50,37 @@
                                                 {{ $user->position }}
                                             </span>
                                         @break
-        
+
                                         @case('tenant admin')
                                             <span class="badge rounded-pill bg-warning text-black">
                                                 {{ $user->position }}
                                             </span>
                                         @break
-    
+
                                         @case('dorm admin')
                                             <span class="badge rounded-pill bg-info">
                                                 {{ $user->position }}
                                             </span>
                                         @break
-        
+
                                         @case('boarder')
                                             <span class="badge rounded-pill bg-secondary">
                                                 {{ $user->position }}
                                             </span>
                                         @break
-        
+
                                         @case('utility staff')
                                             <span class="badge rounded-pill bg-info text-black">
                                                 {{ $user->position }}
                                             </span>
                                         @break
-    
+
                                         @case('canteen staff')
                                             <span class="badge rounded-pill bg-info text-black">
                                                 {{ $user->position }}
                                             </span>
                                         @break
-        
+
                                         @default
                                             <span class="badge rounded-pill bg-secondary">
                                                 {{ $user->position }}
@@ -94,10 +94,14 @@
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#updateModal">
+                                            data-bs-target="#updateModal{{ $user->id }}">
                                             Edit
                                         </button>
-                                                                        
+                                        {{-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#updateModal">
+                                            Edit
+                                        </button> --}}
+
                                         <div class="mx-1"></div>
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">
@@ -111,7 +115,7 @@
                 </table>
             </div>
             <!-- End Table with hoverable rows -->
-    
+
         </div>
 
     </div>
