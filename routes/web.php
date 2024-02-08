@@ -32,8 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::post('/users', [UsersController::class, 'usersPost'])->name('users.post');
+    Route::put('/users/{id}', [UsersController::class, 'usersPut'])->name('users.put');
     Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
-    Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
 
     Route::get('/tenants', function () {
         return view('tenants');

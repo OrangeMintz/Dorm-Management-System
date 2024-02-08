@@ -26,7 +26,7 @@ class UsersController extends Controller
             'last_name' => 'required',
             'email' => 'required|email|unique:users',
             'username' => 'required|unique:users',
-            'position' => 'required',
+            'position' => 'required', // We can add more validations
         ]);
 
         $plainPassword = Str::random(10);
@@ -50,5 +50,34 @@ class UsersController extends Controller
             Mail::to($request->email)->send(new CredentialsMail($user, $plainPassword));
             return redirect(route('users'))->with("success", "User added successfully!");
         }
+    }
+
+    function usersPut(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'first_name' => 'nullable|string',
+            'middle_name' => 'nullable|string',
+            'last_name' => 'nullable|string',
+            'email' => 'nullable|email|unique:users,email,' . $id,
+            'phone_number' => 'nullable|string',
+            'position' => 'nullable|string',
+            'birth_date' => 'nullable|date',
+            'username' => 'nullable|string|unique:users,username,' . $id,
+            'password' => 'nullable|string', // We can add more validations
+        ]);
+
+        // Remove fields with null values from the validated data
+        $validatedData = array_filter($validatedData, function ($value) {
+            return !is_null($value);
+        });
+
+        // Hash password if provided
+        if (isset($validatedData['password'])) {
+            $validatedData['password'] = Hash::make($validatedData['password']);
+        }
+        $user->update($validatedData);
+        return redirect(route('users'))->with("success", "User updated successfully!");
     }
 }
