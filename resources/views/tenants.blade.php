@@ -16,7 +16,7 @@
             Add Tenant
         </button>
     </div>
-    @include('components.modals.dormmodal')
+    @include('components.modals.tenantsmodal')
 
     <section class="section dashboard">
         <div class="row">
@@ -26,8 +26,7 @@
                 <div class="row">
                     @include('components.stats.tenantsstats')
 
-
-                    {{-- @include('components.tables.usertable') --}}
+                    @include('components.tables.tenanttable')
                 </div>
                 
             {{-- </div> --}}

@@ -22,13 +22,16 @@
         <div class="row">
 
             {{-- Left side columns --}}
-            {{-- <div class="col-lg-8"> --}}
-                <div class="row">
+            <div class="col-lg-12">
 
-                    {{-- User Table --}}
-                    {{-- @include('components.tables.usertable') --}}
-                    {{-- End User Table --}}
-                </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Dormitories</h5>
+                                @include('components.cards.dormcards')
+                        </div>
+                    </div>
+
+            </div>
                 
             {{-- </div> --}}
             {{-- End Left side columns --}}
