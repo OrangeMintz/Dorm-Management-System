@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CredentialsMail;
 use App\Models\User;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -24,26 +27,28 @@ class UsersController extends Controller
             'email' => 'required|email|unique:users',
             'username' => 'required|unique:users',
             'position' => 'required',
-            'password' => 'required'
         ]);
 
-        $data['first_name'] = $request->first_name;
-        $data['middle_name'] = $request->middle_name;
-        $data['last_name'] = $request->last_name;
-        $data['email'] = $request->email;
-        $data['phone_number'] = $request->phone_number;
-        $data['position'] = $request->position;
-        $data['birth_date'] = $request->birth_date;
-        $data['username'] = $request->username;
-        $data['password'] = Hash::make($request->password);
+        $plainPassword = Str::random(10);
 
-        $user = User::create($data);
+        $user = User::create([
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+            'position' => $request->position,
+            'birth_date' => $request->birth_date,
+            'username' => $request->username,
+            'password' => Hash::make($plainPassword)
+        ]);
 
         if (!$user) {
+            //Send email with user data
             return redirect(route('users'))->with("error", "Invalid username or password!");
         } else {
+            Mail::to($request->email)->send(new CredentialsMail($user, $plainPassword));
             return redirect(route('users'))->with("success", "User added successfully!");
         }
     }
-
 }
