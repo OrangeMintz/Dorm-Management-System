@@ -9,7 +9,9 @@
                             <h6>OPTIONS</h6>
                         </li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item text-danger" href="#">Remove Dorm Name</a></li>
+                        <li><button class="dropdown-item text-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Remove Dorm Name</button>
+                        </li>
                     </ul>
                 </div><a class="card-body" href="/room">
                     <div class="card-badge"><span class="badge rounded-pill bg-success">Available</span></div>
@@ -39,7 +41,9 @@
                             <h6>OPTIONS</h6>
                         </li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item text-danger" href="#">Remove Dorm Name</a></li>
+                        <li><button class="dropdown-item text-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Remove Dorm Name</button>
+                        </li>
                     </ul>
                 </div><a class="card-body" href="/room">
                     <div class="card-badge"><span class="badge rounded-pill bg-danger">Occupied</span></div>
@@ -69,7 +73,9 @@
                             <h6>OPTIONS</h6>
                         </li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item text-danger" href="#">Remove Dorm Name</a></li>
+                        <li><button class="dropdown-item text-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Remove Dorm Name</button>
+                        </li>
                     </ul>
                 </div><a class="card-body" href="/room">
                     <div class="card-badge"><span class="badge rounded-pill bg-success">Available</span></div>
@@ -98,7 +104,9 @@
                             <h6>OPTIONS</h6>
                         </li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item text-danger" href="#">Remove Dorm Name</a></li>
+                        <li><button class="dropdown-item text-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Remove Dorm Name</button>
+                        </li>
                     </ul>
                 </div><a class="card-body" href="/room">
                     <div class="card-badge"><span class="badge rounded-pill bg-success">Available</span></div>
@@ -128,7 +136,9 @@
                             <h6>OPTIONS</h6>
                         </li>
                         <li><a class="dropdown-item" href="#">Edit</a></li>
-                        <li><a class="dropdown-item text-danger" href="#">Remove Dorm Name</a></li>
+                        <li><button class="dropdown-item text-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Remove Dorm Name</button>
+                        </li>
                     </ul>
                 </div><a class="card-body" href="/room">
                     <div class="card-badge"><span class="badge rounded-pill bg-success">Available</span></div>
