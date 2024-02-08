@@ -22,27 +22,25 @@
     <section class="section dashboard">
         <div class="row">
 
-            <!-- Left side columns -->
-            <div class="col-lg-12">
+            {{-- Left side columns --}}
+            <div class="col-lg-8">
                 <div class="row">
+                    {{-- @include('components.stats.userstats') --}}
 
-                    {{-- Dashboard Stats --}}
-                    @include('components.stats.userstats')
-
+                    {{-- User Table --}}
                     @include('components.tables.usertable')
-
-
+                    {{-- End User Table --}}
                 </div>
+
             </div>
-            <!-- End Left side columns -->
+            {{-- End Left side columns --}}
 
-            <!-- Right side columns -->
+            {{-- Right side columns --}}
             {{-- <div class="col-lg-4">
-
             </div> --}}
-            <!-- End Right side columns -->
+            {{-- End Right side columns --}}
+
 
         </div>
     </section>
-    
 @endsection

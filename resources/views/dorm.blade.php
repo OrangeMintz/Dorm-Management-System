@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@section('pageTitle', 'User Management')
-
+@section('pageTitle', 'Dorm Management')
 @section('content')
     <div class="pagetitle">
         <nav>
@@ -14,35 +13,35 @@
 
     <div class="mt-3 mb-3">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-            Add User
+            Add dormitory
         </button>
     </div>
-    @include('components.modals.usermodal')
+    @include('components.modals.dormmodal')
 
     <section class="section dashboard">
         <div class="row">
 
-            <!-- Left side columns -->
+            {{-- Left side columns --}}
             <div class="col-lg-12">
-                <div class="row">
 
-                    {{-- Dashboard Stats --}}
-                    @include('components.stats.userstats')
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Dormitories</h5>
+                                @include('components.cards.dormcards')
+                        </div>
+                    </div>
 
-                    @include('components.tables.usertable')
-
-
-                </div>
             </div>
-            <!-- End Left side columns -->
+                
+            {{-- </div> --}}
+            {{-- End Left side columns --}}
 
-            <!-- Right side columns -->
+            {{-- Right side columns --}}
             {{-- <div class="col-lg-4">
-
             </div> --}}
-            <!-- End Right side columns -->
+            {{-- End Right side columns --}}
+
 
         </div>
     </section>
-    
 @endsection

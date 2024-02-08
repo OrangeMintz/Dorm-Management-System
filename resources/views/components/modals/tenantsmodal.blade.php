@@ -1,57 +1,64 @@
-{{-- Add User Modal --}}
+{{-- Add Tenant Modal --}}
 <div class="modal fade" id="addModal" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add User</h5>
+                <h5 class="modal-title">Add Tenant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" action="{{ route('users.post') }}" method="POST">
+                <form class="row g-3 needs-validation" novalidate>
                     @csrf
-                    <div class="col-md-4">
-                        <label for="first_name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" name="first_name">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="middle_name" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" name="middle_name">
-                    </div>
-                    <div class="col-md-4">
-                        <label for="last_name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" name="last_name">
-                    </div>
                     <div class="col-md-6">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email">
+                        <label for="tenant" class="form-label">Tenant</label>
+                        <input type="text" class="form-control" name="tenant" placeholder="Name of the Tenant"
+                            required>
+                        <div class="invalid-feedback">
+                            Please enter a tenant name.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="domain" class="form-label">Domain</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="yourdomain"
+                                aria-label="Recipient's username" aria-describedby="domain" required>
+                            <span class="input-group-text" id="domain">.dormy.com</span>
+                            <div class="invalid-feedback">
+                                Please provide a valid domain name.
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" name="username">
-                    </div>
-                    {{-- <div class="col-md-4">
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="username">@</span>
+                          <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend" required="">
+                          <div class="invalid-feedback">
+                            Please provide a unique and valid username.
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-md-6">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password">
-                    </div> --}}
-                    <div class="col-4">
-                        <label for="phone_number" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" name="phone_number" placeholder="09123456789">
+                        <input type="password" class="form-control" name="password" required>
+                        <div class="invalid-feedback">
+                            Please enter a password.
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <label for="birth_date" class="form-label">Birthdate</label>
-                        <input type="date" class="form-control" name="birth_date">
+                    <div class="col-md-6">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="number" class="form-control" name="address" required>
+                        <div class="invalid-feedback">
+                            Please provide an address.
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <label for="inputState" class="form-label">Role</label>
-                        <select id="inputState" class="form-select" name="position">
-                            <option selected="" disabled>Choose...</option>
-                            <option value="super admin">Super Admin</option>
-                            <option value="tenant admin">Tenant Admin</option>
-                            <option value="dorm admin">Dorm Admin</option>
-                            <option value="boarder">Boarder</option>
-                            <option value="utility staff">Utility Personel</option>
-                            <option value="canteen staff">Canteen Staff</option>
-                        </select>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="number" class="form-control" name="phone" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid phone number.
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-secondary">Reset</button>

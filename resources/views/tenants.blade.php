@@ -1,6 +1,5 @@
 @extends('layouts.app')
-@section('pageTitle', 'User Management')
-
+@section('pageTitle', 'Tenants Management')
 @section('content')
     <div class="pagetitle">
         <nav>
@@ -14,35 +13,31 @@
 
     <div class="mt-3 mb-3">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-            Add User
+            Add Tenant
         </button>
     </div>
-    @include('components.modals.usermodal')
+    @include('components.modals.tenantsmodal')
 
     <section class="section dashboard">
         <div class="row">
 
-            <!-- Left side columns -->
-            <div class="col-lg-12">
+            {{-- Left side columns --}}
+            {{-- <div class="col-lg-8"> --}}
                 <div class="row">
+                    @include('components.stats.tenantsstats')
 
-                    {{-- Dashboard Stats --}}
-                    @include('components.stats.userstats')
-
-                    @include('components.tables.usertable')
-
-
+                    @include('components.tables.tenanttable')
                 </div>
-            </div>
-            <!-- End Left side columns -->
+                
+            {{-- </div> --}}
+            {{-- End Left side columns --}}
 
-            <!-- Right side columns -->
+            {{-- Right side columns --}}
             {{-- <div class="col-lg-4">
-
             </div> --}}
-            <!-- End Right side columns -->
+            {{-- End Right side columns --}}
+
 
         </div>
     </section>
-    
 @endsection
