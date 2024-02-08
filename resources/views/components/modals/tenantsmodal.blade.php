@@ -7,31 +7,58 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" action="{{ route('users.post') }}" method="POST">
+                <form class="row g-3 needs-validation" novalidate>
                     @csrf
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="tenant" class="form-label">Tenant</label>
-                        <input type="text" class="form-control" name="tenant" placeholder="Name of the Tenant">
+                        <input type="text" class="form-control" name="tenant" placeholder="Name of the Tenant"
+                            required>
+                        <div class="invalid-feedback">
+                            Please enter a tenant name.
+                        </div>
                     </div>
-                    
-                    <div class="col-md-4">
+
+                    <div class="col-md-6">
                         <label for="domain" class="form-label">Domain</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="domain" aria-label="Recipient's username" aria-describedby="domain">
+                            <input type="text" class="form-control" placeholder="yourdomain"
+                                aria-label="Recipient's username" aria-describedby="domain" required>
                             <span class="input-group-text" id="domain">.dormy.com</span>
-                          </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid domain name.
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <label for="admin" class="form-label">Admin</label>
-                        <input type="text" class="form-control" name="admin" placeholder="Search by ID or Name">
+                    <div class="col-md-6">
+                        <label for="username" class="form-label">Username</label>
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="username">@</span>
+                          <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend" required="">
+                          <div class="invalid-feedback">
+                            Please provide a unique and valid username.
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-md-6">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                        <div class="invalid-feedback">
+                            Please enter a password.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" name="address">
+                        <input type="number" class="form-control" name="address" required>
+                        <div class="invalid-feedback">
+                            Please provide an address.
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <label for="phone" class="form-label">Phone</label>
-                        <input type="number" class="form-control" name="phone">
+                        <input type="number" class="form-control" name="phone" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid phone number.
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-secondary">Reset</button>
