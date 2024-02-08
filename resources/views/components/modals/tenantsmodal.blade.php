@@ -29,35 +29,20 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6">
-                        <label for="username" class="form-label">Username</label>
-                        <div class="input-group has-validation">
-                          <span class="input-group-text" id="username">@</span>
-                          <input type="text" class="form-control" id="username" aria-describedby="inputGroupPrepend" required="">
-                          <div class="invalid-feedback">
-                            Please provide a unique and valid username.
-                          </div>
-                        </div>
-                      </div>
-                    <div class="col-md-6">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" required>
+                        <label for="tenant_admin" class="form-label">Tenant Admin</label>
+                        <input type="text" class="form-control" name="tenant_admin" required>
                         <div class="invalid-feedback">
-                            Please enter a password.
+                            Please select an admin for this tenant.
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address</label>
                         <input type="number" class="form-control" name="address" required>
                         <div class="invalid-feedback">
-                            Please provide an address.
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="phone" class="form-label">Phone</label>
-                        <input type="number" class="form-control" name="phone" required>
-                        <div class="invalid-feedback">
-                            Please provide a valid phone number.
+                            Please provide a valid address for the tenant.
                         </div>
                     </div>
                     <div class="modal-footer">
