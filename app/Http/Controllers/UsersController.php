@@ -80,4 +80,9 @@ class UsersController extends Controller
         $user->update($validatedData);
         return redirect(route('users'))->with("success", "User updated successfully!");
     }
+
+    function get_admins(){
+        $admins = User::all();
+        return response()->json($admins);
+    }
 }

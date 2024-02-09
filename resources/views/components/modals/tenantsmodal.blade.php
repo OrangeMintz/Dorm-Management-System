@@ -30,9 +30,9 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6" class="input-field">
                         <label for="tenant_admin" class="form-label">Tenant Admin</label>
-                        <input type="text" class="form-control" name="tenant_admin" required>
+                        <input type="text" class="form-control typeahead" name="tenant_admin" id="tenant_admin_in_tenant" required>
                         <div class="invalid-feedback">
                             Please select an admin for this tenant.
                         </div>

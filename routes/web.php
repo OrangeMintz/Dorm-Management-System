@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/users', [UsersController::class, 'usersPost'])->name('users.post');
     Route::put('/users/{id}', [UsersController::class, 'usersPut'])->name('users.put');
     Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
+    Route::get('/users/tenant_admin/get', [UsersController::class, 'get_admins'])->name('tenant_admin');
 
     Route::get('/tenants', function () {
         return view('tenants');
