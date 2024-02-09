@@ -82,7 +82,7 @@ class UsersController extends Controller
     }
 
     function get_admins(){
-        $admins = User::all();
+        $admins = User::where('position', 'tenant admin')->get();
         return response()->json($admins);
     }
 }
