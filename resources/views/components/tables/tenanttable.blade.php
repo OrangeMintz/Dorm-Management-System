@@ -10,6 +10,7 @@
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Tenant</th>
+                      <th scope="col">Admin</th>
                       <th scope="col">Domain</th>
                       <th scope="col">Subsription</th>
                       <th scope="col">Address</th>
@@ -20,6 +21,7 @@
                     <tr>
                       <th scope="row">1</th>
                       <td>BukSU</td>
+                      <td>Jayson T.</td>
                       <td>buksu.dormy.com</td>
                       <td><span class="badge rounded-pill bg-success">Pro</span></td>
                       <td>Syre Highway, Malaybalay City, Buk.</td>
@@ -28,6 +30,7 @@
                     <tr>
                         <th scope="row">2</th>
                         <td>CMU</td>
+                        <td>Jayson T.</td>
                         <td>cmu.dormy.com</td>
                         <td><span class="badge rounded-pill bg-secondary">Basic</span></td>
                         <td>Syre Highway, Maramag, Buk.</td>
