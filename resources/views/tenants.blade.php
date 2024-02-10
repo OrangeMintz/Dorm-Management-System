@@ -18,29 +18,27 @@
     </div>
     @include('components.modals.tenantsmodal')
 
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <section class="section dashboard">
         <div class="row">
-            
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
 
             {{-- Left side columns --}}
-            {{-- <div class="col-lg-8"> --}}
+            <div class="col-lg-12">
                 <div class="row">
                     @include('components.stats.tenantsstats')
 
                     @include('components.tables.tenanttable')
                 </div>
                 
-            {{-- </div> --}}
+            </div>
             {{-- End Left side columns --}}
 
             {{-- Right side columns --}}
