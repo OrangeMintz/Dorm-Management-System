@@ -19,7 +19,7 @@
         </li>
 
 
-        <li class="nav-heading">OPTIONS</li>
+        <li class="nav-heading">MENU</li>
 
         <li class="nav-item">
             <a class="nav-link {{ request()->is('users') ? '' : 'collapsed' }}" href="{{ url('/users') }}">
@@ -39,6 +39,20 @@
             <a class="nav-link {{ request()->is('dormitories') ? '' : 'collapsed' }}" href="{{ url('/dormitories') }}">
                 <i class="bi bi-house"></i>
                 <span>Dorm Management</span>
+            </a>
+        </li>
+
+        <li class="nav-heading">USER</li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('profile') ? '' : 'collapsed' }}" href="{{ url('/profile') }}">
+                <i class="bi bi-person-gear"></i>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is('subscription') ? '' : 'collapsed' }}" href="{{ url('/subscription') }}">
+                <i class="bi bi-credit-card-2-back"></i>
+                <span>Subscription</span>
             </a>
         </li>
     </ul>

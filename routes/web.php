@@ -47,4 +47,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dormitories', function () {
         return view('dorm');
     });
+
+    Route::get('/subscription', function () {
+        return view('subscription');
+    });
 });
