@@ -7,11 +7,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3 needs-validation" novalidate>
+                <form action="{{ route('tenants') }}" method="POST" class="row g-3 needs-validation" novalidate>
                     @csrf
                     <div class="col-md-6">
                         <label for="tenant" class="form-label">Tenant</label>
-                        <input type="text" class="form-control" name="tenant" placeholder="Name of the Tenant"
+                        <input type="text" class="form-control" name="tenant_name" placeholder="Name of the Tenant"
                             required>
                         <div class="invalid-feedback">
                             Please enter a tenant name.
@@ -21,7 +21,7 @@
                     <div class="col-md-6">
                         <label for="domain" class="form-label">Domain</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="yourdomain"
+                            <input type="text" name="domain" class="form-control" placeholder="yourdomain"
                                 aria-label="Recipient's username" aria-describedby="domain" required>
                             <span class="input-group-text" id="domain">.dormy.com</span>
                             <div class="invalid-feedback">
@@ -40,14 +40,14 @@
 
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address</label>
-                        <input type="number" class="form-control" name="address" required>
+                        <input type="text" class="form-control" name="address" required>
                         <div class="invalid-feedback">
                             Please provide a valid address for the tenant.
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Confirm</button>
+                        <button type="submit" class="btn btn-primary" id="tenant_admin_confirm">Confirm</button>
                     </div>
                 </form>
             </div>

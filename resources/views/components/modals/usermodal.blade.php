@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-4">
                         <label for="position" class="form-label">Role</label>
-                        <select class="form-select" id="position" required="">
+                        <select class="form-select" id="position" required="" name="position">
                             <option selected="" disabled="" value="">Choose...</option>
                             <option value="super admin">Super Admin</option>
                             <option value="tenant admin">Tenant Admin</option>

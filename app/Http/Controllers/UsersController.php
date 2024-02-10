@@ -44,9 +44,9 @@ class UsersController extends Controller
         ]);
 
         if (!$user) {
-            //Send email with user data
             return redirect(route('users'))->with("error", "Invalid username or password!");
         } else {
+            //Send email with user data
             Mail::to($request->email)->send(new CredentialsMail($user, $plainPassword));
             return redirect(route('users'))->with("success", "User added successfully!");
         }
