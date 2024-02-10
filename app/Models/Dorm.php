@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Employee;
 
-class Tenant extends Model
+class Dorm extends Model
 {
     use HasFactory;
 
-    protected $table = "tenants";
+    protected $table = "dorms";
 
     /**
      * The attributes that are mass assignable.
@@ -19,19 +19,17 @@ class Tenant extends Model
      */
 
      protected $fillable = [
-        'tenant_name',
-        'domain',
-        'tenant_admin',
+        'dorm_head',
+        'dorm_name',
         'address',
-        'database',
-        'subscription',
+        'rooms',
      ];
 
      /**
-     * Get the admin user for this tenant.
+     * Get the dorm head user for this tenant.
      */
-    public function admin()
+    public function dormHead()
     {
-        return $this->belongsTo(User::class, 'tenant_admin');
+        return $this->belongsTo(Employee::class, 'dorm_head');
     }
 }

@@ -18,7 +18,6 @@
         <!-- Main content section -->
         <main id="main" class="main">
             @yield('content')
-            <input type="text" class="form-control typeahead" name="tenant_admin" id="tenant_admin_in_tenant" required>
         </main>
 
         <!-- Footer content -->
@@ -56,9 +55,10 @@
     });
 </script>
 
-<!-- Necessary code for autocompletion in tenant admin within tenant modal -->
+<!-- Necessary code for autocompletion in tenant admin within add tenant modal -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         var dataCust = [];
