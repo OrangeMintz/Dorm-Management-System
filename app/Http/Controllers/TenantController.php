@@ -18,7 +18,10 @@ class TenantController extends Controller
     }
 
     function viewTenants(){
-        return view('tenants');
+
+        // Populate the foreign key inside Tenant, with('admin') is in Tenant Model
+        $tenants = Tenant::with('admin')->get();
+        return view('tenants', compact('tenants'));
     }
 
     function tenantsPost(Request $request){

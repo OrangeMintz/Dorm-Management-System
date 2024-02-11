@@ -89,8 +89,8 @@
                                 </td>
                                 <td>{{ $user->phone_number }}</td>
                                 <td>{{ $user->birth_date }}</td>
-                                <td>{{ $user->created_at }}</td>
-                                <td>{{ $user->updated_at }}</td>
+                                <td>{{ explode(" ", $user->created_at)[0] }}</td>
+                                <td>{{ explode(" ", $user->updated_at)[0] }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"

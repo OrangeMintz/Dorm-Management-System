@@ -14,28 +14,19 @@
                       <th scope="col">Domain</th>
                       <th scope="col">Subsription</th>
                       <th scope="col">Address</th>
-                      <th scope="col">Phone</th>
                     </tr>
                   </thead>
                   <tbody>
+                  @foreach ($tenants as $tenant)
                     <tr>
-                      <th scope="row">1</th>
-                      <td>BukSU</td>
-                      <td>Jayson T.</td>
-                      <td>buksu.dormy.com</td>
-                      <td><span class="badge rounded-pill bg-success">Pro</span></td>
-                      <td>Syre Highway, Malaybalay City, Buk.</td>
-                      <td>09123456789</td>
+                      <th scope="row">{{ $tenant->id }}</th>
+                      <td>{{ $tenant->tenant_name }}</td>
+                      <td>{{ $tenant->admin->first_name }} {{ $tenant->admin->last_name }}</td>
+                      <td>{{ $tenant->domain }}</td>
+                      <td><span class="badge rounded-pill bg-success">{{ $tenant->subscription }}</span></td>
+                      <td>{{ $tenant->address }}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>CMU</td>
-                        <td>Jayson T.</td>
-                        <td>cmu.dormy.com</td>
-                        <td><span class="badge rounded-pill bg-secondary">Basic</span></td>
-                        <td>Syre Highway, Maramag, Buk.</td>
-                        <td>09123456789</td>
-                      </tr>
+                  @endforeach
                   </tbody>
                 </table>
             </div>
