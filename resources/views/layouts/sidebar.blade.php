@@ -50,11 +50,35 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('subscription') ? '' : 'collapsed' }}" href="{{ url('/subscription') }}">
+            <a class="nav-link {{ request()->is('subscription') ? '' : 'collapsed' }}"
+                href="{{ url('/subscription') }}">
                 <i class="bi bi-credit-card-2-back"></i>
                 <span>Subscription</span>
             </a>
         </li>
+        <li class="nav-heading">SETTINGS</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#" aria-expanded="false">
+              <i class="bi bi-bag"></i><span>Archives</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="icons-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav" style="">
+              <li>
+                <a href="/users/archived">
+                  <i class="bi bi-circle"></i><span>Users</span>
+                </a>
+              </li>
+              <li>
+                <a href="/tenants/archived">
+                  <i class="bi bi-circle"></i><span>Tenants</span>
+                </a>
+              </li>
+              <li>
+                <a href="/dormitories/archived">
+                  <i class="bi bi-circle"></i><span>Dormitories</span>
+                </a>
+              </li>
+            </ul>
+          </li>
     </ul>
 
 </aside>
