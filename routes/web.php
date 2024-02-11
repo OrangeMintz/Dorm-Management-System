@@ -28,7 +28,7 @@ Route::group(['middleware' => "web"], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    
+
     //Dashboard Routes
     Route::group(['middleware' => 'web'], function () {
         Route::get('/dashboard', [Dashboard::class, 'viewDashboard']);
@@ -37,6 +37,11 @@ Route::group(['middleware' => 'auth'], function () {
     //User Routes
     Route::post('/users', [UsersController::class, 'usersPost'])->name('users.post');
     Route::put('/users/{id}', [UsersController::class, 'usersPut'])->name('users.put');
+    Route::delete('/users/{id}', [UsersController::class, 'usersDelete'])->name('users.delete');
+    // Route::delete('/users/{id}', [UsersController::class, 'usersForceDelete'])->name('users.forceDelete');
+    // Route::delete('/users/{id}', [UsersController::class, 'usersRestore'])->name('users.restore');
+
+
     Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
     Route::get('/users/tenant_admin/get', [UsersController::class, 'get_admins'])->name('tenant_admin');
 

@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="middle_name" class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" name="middle_name" required>
+                        <input type="text" class="form-control" name="middle_name">
                         <div class="invalid-feedback">
                             Please enter a valid middle name.
                         </div>
@@ -78,11 +78,11 @@
                             Please select a role.
                         </div>
                     </div>
-                </div>
-                    <div class="modal-footer">
-                    <button type="reset" class="btn btn-secondary">Reset</button>
-                    <button type="submit" class="btn btn-primary">Confirm</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
             </form>
         </div>
     </div>
@@ -180,20 +180,26 @@
 
 
 {{-- Delete User Modal --}}
-<div class="modal fade" id="deleteModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Warning</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete this user? This action cannot be undone.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Confirm</button>
+@foreach ($users as $user)
+    <div class="modal fade" id="deleteModal{{ $user->id }}" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this user? This action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <form action="{{ route('users.delete', ['id' => $user->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Confirm</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@endforeach

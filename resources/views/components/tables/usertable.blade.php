@@ -89,8 +89,8 @@
                                 </td>
                                 <td>{{ $user->phone_number }}</td>
                                 <td>{{ $user->birth_date }}</td>
-                                <td>{{ explode(" ", $user->created_at)[0] }}</td>
-                                <td>{{ explode(" ", $user->updated_at)[0] }}</td>
+                                <td>{{ explode(' ', $user->created_at)[0] }}</td>
+                                <td>{{ explode(' ', $user->updated_at)[0] }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
@@ -99,7 +99,7 @@
                                         </button>
                                         <div class="mx-1"></div>
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal">
+                                            data-bs-target="#deleteModal{{ $user->id }}">
                                             Delete
                                         </button>
                                     </div>
@@ -110,7 +110,6 @@
                 </table>
             </div>
             <!-- End Table with hoverable rows -->
-
         </div>
 
     </div>
