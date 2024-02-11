@@ -55,6 +55,49 @@
     });
 </script>
 
+<!-- Necessary code for autocompletion in tenant admin within add tenant modal -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var dataCust = [];
+
+        //REST API to get tenant admins
+        $.ajax({
+            type:'get',
+            url: '{!!URL::to('users/tenant_admin/get')!!}',
+            success:function(response){
+
+                var custArray = response;
+                for (var i =0; i < custArray.length; i++){
+                    name = "#" + custArray[i].id + " - " + custArray[i].first_name + " " + custArray[i].middle_name + " " + custArray[i].last_name
+                    dataCust.push(name);
+                }
+            
+                $('.typeahead').typeahead({
+                    source: dataCust,
+                });
+            }
+        })
+
+        $('#tenant_admin_in_tenant').on('input',function(){
+            var typedValue = $(this).val().trim();
+            console.log(typedValue);
+            if(typedValue == ""){
+                $('#tenant_admin_confirm').prop('disabled', false)
+            }else{
+                $('#tenant_admin_confirm').prop('disabled', (dataCust.includes(typedValue) ? false : true))
+            }
+        })
+
+        $('#tenant_admin_in_tenant').change(function(){
+            var typedValue = $(this).val();
+            console.log(typedValue);
+            $('#tenant_admin_confirm').prop('disabled', false)
+        })
+    })
+</script>
 
 </body>
 
