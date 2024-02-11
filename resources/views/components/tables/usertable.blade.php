@@ -102,6 +102,16 @@
                                             data-bs-target="#deleteModal{{ $user->id }}">
                                             Delete
                                         </button>
+                                        <div class="mx-1"></div>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            Archive
+                                        </button>
+                                        <div class="mx-1"></div>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#restoreModal">
+                                            Restore
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
