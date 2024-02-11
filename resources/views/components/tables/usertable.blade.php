@@ -31,7 +31,7 @@
                             <th scope="col">Birthdate</th>
                             <th scope="col">Created At</th>
                             <th scope="col">Updated At</th>
-                            <th scope="col" class="text-center">Action</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
 
@@ -91,17 +91,12 @@
                                 <td>{{ $user->birth_date }}</td>
                                 <td>{{ explode(" ", $user->created_at)[0] }}</td>
                                 <td>{{ explode(" ", $user->updated_at)[0] }}</td>
-                                <td class="text-center">
+                                <td>
                                     <div class="d-flex justify-content-center">
                                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#updateModal{{ $user->id }}">
                                             Edit
                                         </button>
-                                        {{-- <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#updateModal">
-                                            Edit
-                                        </button> --}}
-
                                         <div class="mx-1"></div>
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#deleteModal">
