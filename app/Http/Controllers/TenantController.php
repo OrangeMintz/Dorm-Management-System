@@ -76,7 +76,7 @@ class TenantController extends Controller
 
             // add the domain for the newly created tenant
             // Create the domain for the tenant
-            $tenant->domains()->create(['domain' => $tenant->domain]);
+            $tenant->domains()->create(['domain' => 'dormy.' . $tenant->domain]);
 
             return redirect(route('tenants'))->with("success", "Tenant added successfully!");
         }
