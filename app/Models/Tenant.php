@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
+use Stancl\Tenancy\Contracts\TenantWithDatabase;
+use Stancl\Tenancy\Database\Concerns\HasDatabase;
+use Stancl\Tenancy\Database\Concerns\HasDomains;
 
-class Tenant extends Model
+class Tenant extends BaseTenant implements TenantWithDatabase
 {
-    use HasFactory;
-
+    use HasDatabase, HasDomains;
+    
     protected $table = "tenants";
 
     /**
@@ -19,6 +20,7 @@ class Tenant extends Model
      */
 
      protected $fillable = [
+        'id',
         'tenant_name',
         'domain',
         'tenant_admin',
@@ -34,4 +36,19 @@ class Tenant extends Model
     {
         return $this->belongsTo(User::class, 'tenant_admin');
     }
+    
+
+    public static function getCustomColumns(): array
+    {
+        return [
+            'id',
+            'tenant_name',
+            'domain',
+            'tenant_admin',
+            'address',
+            'database',
+            'subscription',
+        ];
+    }
+
 }
