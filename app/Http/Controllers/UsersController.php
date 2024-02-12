@@ -21,6 +21,14 @@ class UsersController extends Controller
         return view('users', compact('users'));
     }
 
+    //GET EMPLOYEES
+    function viewEmployees()
+    {
+        $users = User::all();
+        return view('employees', compact('users'));
+    }
+
+
     //CREATE USERS
     function usersPost(Request $request)
     {
