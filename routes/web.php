@@ -39,8 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/', [UsersController::class, 'usersPost'])->name('users.post');
         Route::put('/{id}', [UsersController::class, 'usersPut'])->name('users.put');
         Route::delete('/{id}', [UsersController::class, 'usersDelete'])->name('users.delete');
+        Route::get('/restore/{id}', [UsersController::class, 'usersRestore'])->name('users.restore');
         Route::get('/archived', [UsersController::class, 'viewUsers'])->name('archived.users');
-
     });
 
     // Employee Routes
@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Boarders Routes
     Route::get('/boarders', [UsersController::class, 'viewEmployees'])->name('boarders');
-    
+
     // Archived Tenants Route
     Route::get('/tenants/archived', [TenantController::class, 'viewTenants'])->name('tenants.archived');
 

@@ -18,6 +18,8 @@ class UsersController extends Controller
     function viewUsers()
     {
         $users = User::all();
+        // $users = User::onlyTrashed()->get();
+
         return view('users', compact('users'));
     }
 
@@ -96,12 +98,12 @@ class UsersController extends Controller
     //SOFT DELETE USERS
     function usersDelete($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::withTrashed()->findOrFail($id);
 
-        // Delete the user
-        $user->delete();
+        // Restore the user
+        $user->restore();
 
-        return redirect(route('users'))->with("success", "User deleted successfully!");
+        return redirect(route('users'))->with("success", "User restored  successfully!");
     }
 
     //RESTORE USERS

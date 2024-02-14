@@ -103,13 +103,9 @@
                                             Delete
                                         </button>
                                         <div class="mx-1"></div>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#archiveModal">
-                                            Archive
-                                        </button>
-                                        <div class="mx-1"></div>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#restoreModal">
+
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#restoreModal{{ $user->id }}">
                                             Restore
                                         </button>
                                     </div>
