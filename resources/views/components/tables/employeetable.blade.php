@@ -1,12 +1,24 @@
 <div class="col-12">
     <div class="card ">
-        <!-- Filter Dropdown -->
-        <!-- ... -->
+
+        <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+        </div>
 
         <div class="card-body">
             <h5 class="card-title">User Management</h5>
 
             <div class="table-responsive">
+
                 <table class="table table-hover datatable">
                     <thead>
                         <tr>
@@ -27,7 +39,8 @@
                         @foreach ($users as $user)
                             <tr>
                                 <th scope="row">{{ $user->id }}</th>
-                                <td>{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }}</td>
+                                <td>{{ $user->first_name }} {{ $user->middle_name }}
+                                    {{ $user->last_name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>
@@ -80,24 +93,25 @@
                                 <td>{{ explode(' ', $user->updated_at)[0] }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        @if (request()->is('users/archived'))
-                                            <!-- Show restore button only for archived users -->
-                                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#restoreModal{{ $user->id }}">
-                                                Restore
-                                            </button>
-                                        @else
-                                            <!-- Show edit and delete buttons for non-archived users -->
-                                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#updateModal{{ $user->id }}">
-                                                Edit
-                                            </button>
-                                            <div class="mx-1"></div>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal{{ $user->id }}">
-                                                Delete
-                                            </button>
-                                        @endif
+                                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#updateModal{{ $user->id }}">
+                                            Edit
+                                        </button>
+                                        <div class="mx-1"></div>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal{{ $user->id }}">
+                                            Delete
+                                        </button>
+                                        <div class="mx-1"></div>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#archiveModal">
+                                            Archive
+                                        </button>
+                                        <div class="mx-1"></div>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#restoreModal">
+                                            Restore
+                                        </button>
                                     </div>
                                 </td>
                             </tr>

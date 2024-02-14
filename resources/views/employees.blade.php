@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pageTitle', 'User Management')
+@section('pageTitle', 'Employee Management')
 
 @section('content')
     <div class="pagetitle">
@@ -19,28 +19,39 @@
     </div>
     @include('components.modals.usermodal')
 
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
+
+
     <section class="section dashboard">
         <div class="row">
 
-            {{-- Left side columns --}}
-            <div class="col-lg-8">
+            <!-- Left side columns -->
+            <div class="col-lg-12">
                 <div class="row">
-                    {{-- @include('components.stats.userstats') --}}
 
-                    {{-- User Table --}}
+                    {{-- Dashboard Stats --}}
+
                     @include('components.tables.usertable')
-                    {{-- End User Table --}}
+
+
                 </div>
-
             </div>
-            {{-- End Left side columns --}}
+            <!-- End Left side columns -->
 
-            {{-- Right side columns --}}
+            <!-- Right side columns -->
             {{-- <div class="col-lg-4">
-            </div> --}}
-            {{-- End Right side columns --}}
 
+            </div> --}}
+            <!-- End Right side columns -->
 
         </div>
     </section>
+
 @endsection

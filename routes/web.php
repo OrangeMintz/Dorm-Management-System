@@ -5,10 +5,7 @@ use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GoogleController;
-
-Route::get('/', function () {
-    return redirect('/login');
-});
+use App\Http\Controllers\TenantController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -18,28 +15,52 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::group(['middleware' => "web"], function () {
-    Route::get('/login', [AuthManager::class, 'login'])->name(name: 'login')->middleware('guest');
-    Route::post('/login', [AuthManager::class, 'loginPost'])->name(name: 'loginPost')->middleware('guest');
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/login', [AuthManager::class, 'login'])->name('login')->middleware('guest');
+    Route::post('/login', [AuthManager::class, 'loginPost'])->name('loginPost')->middleware('guest');
     Route::get('/google', [GoogleController::class, 'loginWithGoogle'])->name('google');
     Route::any('/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
     Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::group(['middleware' => 'web'], function () {
-        Route::get('/dashboard', [Dashboard::class, 'viewDashboard']);
+
+    // Dashboard Routes
+    Route::get('/dashboard', [Dashboard::class, 'viewDashboard']);
+
+    // Tenant Routes
+    Route::get('/tenants', [TenantController::class, 'viewTenants'])->name('tenants');
+    Route::post('/tenants', [TenantController::class, 'tenantsPost'])->name('tenants.post');
+
+    // User Routes
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/', [UsersController::class, 'viewUsers'])->name('users');
+        Route::get('/tenant_admin/get', [UsersController::class, 'get_admins'])->name('tenant_admin');
+        Route::post('/', [UsersController::class, 'usersPost'])->name('users.post');
+        Route::put('/{id}', [UsersController::class, 'usersPut'])->name('users.put');
+        Route::delete('/{id}', [UsersController::class, 'usersDelete'])->name('users.delete');
+        Route::get('/restore/{id}', [UsersController::class, 'usersRestore'])->name('users.restore');
+
+        // Archived Users Route
+        Route::get('/archived', [UsersController::class, 'viewArchivedUsers'])->name('users.archived');
     });
 
-    Route::post('/users', [UsersController::class, 'usersPost'])->name('users.post');
-    Route::put('/users/{id}', [UsersController::class, 'usersPut'])->name('users.put');
-    Route::get('/users', [UsersController::class, 'viewUsers'])->name('users');
+    // Employee Routes
+    Route::get('/employees', [UsersController::class, 'viewEmployees'])->name('employees');
 
-    Route::get('/tenants', function () {
-        return view('tenants');
-    });
+    // Boarders Routes
+    Route::get('/boarders', [UsersController::class, 'viewEmployees'])->name('boarders');
 
-    Route::get('/dormitories', function () {
+    // Archived Tenants Route
+    Route::get('/tenants/archived', [TenantController::class, 'viewTenants'])->name('tenants.archived');
+
+    // Archived Dormitories Route
+    Route::get('/dormitories/archived', function () {
         return view('dorm');
-    });
+    })->name('dormitories.archived');
+
+    // Subscription Route
+    Route::get('/subscription', function () {
+        return view('subscription');
+    })->name('subscription');
 });

@@ -13,12 +13,32 @@ use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
+
+    //GET USERS
     function viewUsers()
     {
         $users = User::all();
+        // $users = User::onlyTrashed()->get();
+
         return view('users', compact('users'));
     }
 
+    //GET ARCHIVED USERS
+    function viewArchivedUsers()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('archivedUsers', compact('users'));
+    }
+
+    //GET EMPLOYEES
+    function viewEmployees()
+    {
+        $users = User::all();
+        return view('employees', compact('users'));
+    }
+
+
+    //CREATE USERS
     function usersPost(Request $request)
     {
         $request->validate([
@@ -44,14 +64,15 @@ class UsersController extends Controller
         ]);
 
         if (!$user) {
-            //Send email with user data
             return redirect(route('users'))->with("error", "Invalid username or password!");
         } else {
+            //Send email with user data
             Mail::to($request->email)->send(new CredentialsMail($user, $plainPassword));
             return redirect(route('users'))->with("success", "User added successfully!");
         }
     }
 
+    //UPDATE USERS
     function usersPut(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -79,5 +100,36 @@ class UsersController extends Controller
         }
         $user->update($validatedData);
         return redirect(route('users'))->with("success", "User updated successfully!");
+    }
+
+    //SOFT DELETE USERS
+    function usersDelete($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        // Restore the user
+        $user->delete();
+
+        return redirect(route('users'))->with("success", "User restored  successfully!");
+    }
+
+    //RESTORE USERS
+    function usersRestore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        // Restore the user
+        $user->restore();
+
+        return back()->with("success", "User restored successfully!");
+    }
+
+
+
+    //GET ADMINS
+    function get_admins()
+    {
+        $admins = User::where('position', 'tenant admin')->get();
+        return response()->json($admins);
     }
 }

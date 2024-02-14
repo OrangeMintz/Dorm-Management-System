@@ -1,5 +1,6 @@
 @extends('layouts.app')
-@section('pageTitle', 'Tenants Management')
+@section('pageTitle', 'Boarders Management')
+
 @section('content')
     <div class="pagetitle">
         <nav>
@@ -13,40 +14,44 @@
 
     <div class="mt-3 mb-3">
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-            Add Tenant
+            Add User
         </button>
     </div>
-    @include('components.modals.tenantsmodal')
+    @include('components.modals.usermodal')
 
     @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            @foreach ($errors->all() as $error)
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ $error }}
-            @endforeach
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     @endif
+
 
     <section class="section dashboard">
         <div class="row">
 
-            {{-- Left side columns --}}
+            <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
-                    @include('components.stats.tenantsstats')
 
-                    @include('components.tables.tenanttable')
+                    {{-- Dashboard Stats --}}
+
+                    @include('components.tables.usertable')
+
+
                 </div>
-                
             </div>
-            {{-- End Left side columns --}}
+            <!-- End Left side columns -->
 
-            {{-- Right side columns --}}
+            <!-- Right side columns -->
             {{-- <div class="col-lg-4">
-            </div> --}}
-            {{-- End Right side columns --}}
 
+            </div> --}}
+            <!-- End Right side columns -->
 
         </div>
     </section>
+
 @endsection
