@@ -108,7 +108,7 @@ class UsersController extends Controller
         $user = User::withTrashed()->findOrFail($id);
 
         // Restore the user
-        $user->restore();
+        $user->delete();
 
         return redirect(route('users'))->with("success", "User restored  successfully!");
     }
@@ -121,7 +121,7 @@ class UsersController extends Controller
         // Restore the user
         $user->restore();
 
-        return redirect(route('users'))->with("success", "User restored  successfully!");
+        return back()->with("success", "User restored successfully!");
     }
 
 
