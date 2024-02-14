@@ -40,7 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/{id}', [UsersController::class, 'usersPut'])->name('users.put');
         Route::delete('/{id}', [UsersController::class, 'usersDelete'])->name('users.delete');
         Route::get('/restore/{id}', [UsersController::class, 'usersRestore'])->name('users.restore');
-        Route::get('/archived', [UsersController::class, 'viewUsers'])->name('archived.users');
+
+        // Archived Users Route
+        Route::get('/archived', [UsersController::class, 'viewArchivedUsers'])->name('users.archived');
     });
 
     // Employee Routes

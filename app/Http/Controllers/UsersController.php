@@ -23,6 +23,13 @@ class UsersController extends Controller
         return view('users', compact('users'));
     }
 
+    //GET ARCHIVED USERS
+    function viewArchivedUsers()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('archivedUsers', compact('users'));
+    }
+
     //GET EMPLOYEES
     function viewEmployees()
     {
