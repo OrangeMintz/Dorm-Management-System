@@ -42,16 +42,16 @@
  * Sidebar toggle
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Select all elements with the class 'toggle-sidebar-btn'
-  var toggleButtons = document.querySelectorAll('.toggle-sidebar-btn');
-
-  // Add click event listeners to all toggle buttons
-  toggleButtons.forEach(function(button) {
-    button.addEventListener('click', function(e) {
-      document.body.classList.toggle('toggle-sidebar');
-    });
+  // Add click event listener to the document body
+  document.body.addEventListener('click', function(event) {
+      // Check if the clicked element has the class 'toggle-sidebar-btn'
+      if (event.target.classList.contains('toggle-sidebar-btn')) {
+          document.body.classList.toggle('toggle-sidebar');
+      }
   });
 });
+
+
 
 
   /**

@@ -13,12 +13,32 @@ use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
+
+    //GET USERS
     function viewUsers()
     {
         $users = User::all();
+        // $users = User::onlyTrashed()->get();
+
         return view('users', compact('users'));
     }
 
+    //GET ARCHIVED USERS
+    function viewArchivedUsers()
+    {
+        $users = User::onlyTrashed()->get();
+        return view('archivedUsers', compact('users'));
+    }
+
+    //GET EMPLOYEES
+    function viewEmployees()
+    {
+        $users = User::all();
+        return view('employees', compact('users'));
+    }
+
+
+    //CREATE USERS
     function usersPost(Request $request)
     {
         $request->validate([
@@ -52,6 +72,7 @@ class UsersController extends Controller
         }
     }
 
+    //UPDATE USERS
     function usersPut(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -81,7 +102,33 @@ class UsersController extends Controller
         return redirect(route('users'))->with("success", "User updated successfully!");
     }
 
-    function get_admins(){
+    //SOFT DELETE USERS
+    function usersDelete($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        // Restore the user
+        $user->delete();
+
+        return redirect(route('users'))->with("success", "User restored  successfully!");
+    }
+
+    //RESTORE USERS
+    function usersRestore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+
+        // Restore the user
+        $user->restore();
+
+        return back()->with("success", "User restored successfully!");
+    }
+
+
+
+    //GET ADMINS
+    function get_admins()
+    {
         $admins = User::where('position', 'tenant admin')->get();
         return response()->json($admins);
     }

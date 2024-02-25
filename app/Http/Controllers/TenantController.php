@@ -13,79 +13,73 @@ class TenantController extends Controller
 {
     //constructor for building DatabaseManager
     protected $db;
-    public function __construct(DatabaseManager $database){
+    public function __construct(DatabaseManager $database)
+    {
         $this->db = $database;
     }
 
-    function viewTenants(){
+    function viewTenants()
+    {
 
         // Populate the foreign key inside Tenant, with('admin') is in Tenant Model
         $tenants = Tenant::with('admin')->get();
         return view('tenants', compact('tenants'));
     }
 
-    function tenantsPost(Request $request){
-
+    function tenantsPost(Request $request)
+    {
         $database = $request->domain;
 
-        //Split ID from tenant_admin
-        $tenantAdminId = (int)substr($request->input('tenant_admin'), 1, strpos($request->input('tenant_admin'), '') - 1);
+        //Split ID from tenant_admin if provided
+        $tenantAdminId = null;
+        if ($request->filled('tenant_admin')) {
+            $tenantAdminId = (int)substr($request->input('tenant_admin'), 1, strpos($request->input('tenant_admin'), '') - 1);
+        }
+
         $request->merge([
             'tenant_admin' => $tenantAdminId,
-            'domain' => $request->domain . ".dormy.com",
+            'domain' => $request->domain . ".localhost",
             'database' => $database,
             'subscription' => "basic",
         ]);
 
-        $createDatabase = $this->createDatabase($database);
+        // Validate request data
+        $request->validate([
+            'tenant_name' => 'required|string',
+            'domain' => 'required|string|unique:tenants',
+            'tenant_admin' => [
+                'nullable', // Tenant admin can be nullable
+                Rule::exists('users', 'id')->where(function ($query) use ($tenantAdminId) {
+                    $query->where('id', $tenantAdminId);
+                }),
+            ],
+            'address' => 'required|string',
+            'database' => 'required|string|unique:tenants',
+            'subscription' => 'required|string',
+        ]);
 
-        if(!$createDatabase){
-            return redirect(route('tenants'))->with("error", "Error creating database for tenant!");
-        }else{
-            //Validate request data
-            $request->validate([
-                'tenant_name' => 'required|string',
-                'domain' => 'required|string|unique:tenants',
-                'tenant_admin' => 'required|exists:users,id',
-                'address' => 'required|string',
-                'database' => 'required|string|unique:tenants',
-                'subscription' => 'required|string',
-            ]);
+        // Store tenant in database
+        $tenant = Tenant::create([
+            'id' => $request->database,
+            'tenancy_db_name' => $request->database,
+            'tenant_name' => $request->tenant_name,
+            'domain' => $request->domain,
+            'tenant_admin' => $request->tenant_admin,
+            'address' => $request->address,
+            'database' => $request->database,
+            'subscription' => $request->subscription,
+        ]);
+        
+        if (!$tenant) {
+            return redirect(route('tenants'))->with("error", "Error adding tenant!");
+        } else {
 
-            //store tenant in database
-            $tenant = Tenant::create([
-                'tenant_name' => $request->tenant_name,
-                'domain' => $request->domain,
-                'tenant_admin' => $request->tenant_admin,
-                'address' => $request->address,
-                'database' => $request->database,
-                'subscription' => $request->subscription,
-            ]);
+            // add the domain for the newly created tenant
+            // Create the domain for the tenant
+            $tenant->domains()->create(['domain' => 'dormy.' . $tenant->domain]);
 
-            if(!$tenant){
-                return redirect(route('tenants'))->with("error", "Error adding tenant!");
-            }else{
-                return redirect(route('tenants'))->with("success", "Tenant added successfully!");
-            }
-        }       
-    }
-
-     //function for automated database creation and migration
-     public function createDatabase($databaseName){
-        try {
-            $this->db->statement("CREATE DATABASE IF NOT EXISTS $databaseName");
-
-            // change the database connection dynamically
-            config(['database.connections.new.database' => $databaseName]);
-            DB::purge('new');
-            Artisan::call('migrate', [
-                '--database' => 'new',
-                '--path' => 'database/tenant_migrations',
-            ]);
-            
-            return true;
-        } catch (\Exception $e) {
-            return false;
+            return redirect(route('tenants'))->with("success", "Tenant added successfully!");
         }
     }
+
 }

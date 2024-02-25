@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dorms', function (Blueprint $table) {
+        Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('dorm_head');
-            $table->string('dorm_name');
-            $table->string('address');
-            $table->integer('rooms');
-            $table->timestamps();
-
-            $table->foreign('dorm_head')->references('id')->on('employees');
+            $table->string('uuid')->unique();
+            $table->text('connection');
+            $table->text('queue');
+            $table->longText('payload');
+            $table->longText('exception');
+            $table->timestamp('failed_at')->useCurrent();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dorms');
+        Schema::dropIfExists('failed_jobs');
     }
 };

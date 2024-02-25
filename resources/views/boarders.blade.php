@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('pageTitle', 'User Management')
+@section('pageTitle', 'Boarders Management')
 
 @section('content')
     <div class="pagetitle">
@@ -37,7 +37,6 @@
                 <div class="row">
 
                     {{-- Dashboard Stats --}}
-                    @include('components.stats.userstats')
 
                     @include('components.tables.usertable')
 
