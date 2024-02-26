@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tenant;
 use Illuminate\Support\Facades\Hash;
 
 class AuthManager extends Controller
@@ -39,5 +40,16 @@ class AuthManager extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    function loginTenant(Request $request){
+
+        $domain = tenant('domain');
+
+        $tenant = Tenant::where('domain', $domain)->first();
+
+        return view('login')->with('tenant', $tenant->tenant_name);
+
+
     }
 }

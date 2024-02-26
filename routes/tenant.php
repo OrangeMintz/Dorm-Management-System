@@ -29,21 +29,26 @@ Route::middleware([
     //central domain => app.com
     //tenant1.app.com/
 
-    Route::get('/', function () {
-
-        $domain = tenant('domain');
-
-        return "<center><h1>$domain login page!</h1></center>";
-
-    });
+    Route::get('/', [AuthManager::class, 'loginTenant'])->name('loginTenant')->middleware('guest');
+    
 
 });
 
 
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/', [AuthManager::class, 'login'])->name('login')->middleware('guest');
-    Route::post('/', [AuthManager::class, 'loginPost'])->name('loginPost')->middleware('guest');
-    Route::get('/google', [GoogleController::class, 'loginWithGoogle'])->name('google');
-    Route::any('/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
-    Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
-});
+// Route::group(['middleware' => 'web',
+// InitializeTenancyByDomain::class,
+// PreventAccessFromCentralDomains::class,
+// ], function () {
+//     Route::get('/', function () {
+
+//                 $domain = tenant('domain');
+        
+//                 return "<center><h1>$domain login page!</h1></center>";
+        
+//             });
+//     // Route::get('/', [AuthManager::class, 'loginTenant'])->name('login')->middleware('guest');
+//     // Route::post('/', [AuthManager::class, 'loginPost'])->name('loginPost')->middleware('guest');
+//     // Route::get('/google', [GoogleController::class, 'loginWithGoogle'])->name('google');
+//     // Route::any('/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+//     // Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
+// });
