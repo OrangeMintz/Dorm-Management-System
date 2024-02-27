@@ -8,9 +8,7 @@
 <body>
 
     <main>
-        <div class="container">
-
-            
+        <div class="container">            
 
             <section
                 class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -21,8 +19,10 @@
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo-login d-flex align-items-center w-auto">
                                     @if(isset($tenant))
-                                            <h2>{{ $tenant }}</h2>
-                                        @endif
+                                        <center><h2>{{ strtoupper($tenant) }}</h2></center>
+                                    @else
+                                        <img src="assets/img/logo.png" alt="">
+                                    @endif
                                 </a>
                             </div>
                             <!-- End Logo -->
@@ -36,10 +36,10 @@
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
 
-                                    <form action="{{ route('login') }}" method="POST" class="row g-3 needs-validation"
+                                    <form action="{{ (isset($tenant) ? route('loginTenantPost') : route('login')) }}" method="POST" class="row g-3 needs-validation"
                                         novalidate>
                                         @csrf
-                                        <div class="col-12">
+                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>

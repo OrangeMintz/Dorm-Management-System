@@ -27,8 +27,19 @@ class AuthManager extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             // dd($user.attributes);
-            session(['user' => $user]);
-            return redirect()->intended('dashboard');
+
+            // Check if the user has the position of super admin
+            if ($user->position === 'super admin') {
+                // Store the user in the session
+                session(['user' => $user]);
+                // Redirect to the intended page (dashboard)
+                return redirect()->intended('dashboard');
+            } else {
+                // If the user does not have the position of super admin, log them out and show an error message
+                Auth::logout();
+                return redirect(route('login'))->with("error", "Unauthorized access!");
+            }
+            
         } else {
             return redirect(route('login'))->with("error", "Invalid username or password!");
         }
@@ -42,14 +53,4 @@ class AuthManager extends Controller
         return redirect('/');
     }
 
-    function loginTenant(Request $request){
-
-        $domain = tenant('domain');
-
-        $tenant = Tenant::where('domain', $domain)->first();
-
-        return view('login')->with('tenant', $tenant->tenant_name);
-
-
-    }
 }
