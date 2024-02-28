@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\TenantController;
+use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\GoogleController;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
@@ -29,33 +30,13 @@ Route::middleware([
 
     //central domain => app.com
     //tenant1.app.com/
+    
+    Route::get('/', function () {
+        return redirect(route('loginTenant'));
+    });
 
-    Route::get('/', [TenantController::class, 'loginTenant'])->name('loginTenant')->middleware('guest');
+    Route::get('/login', [TenantController::class, 'loginTenant'])->name('loginTenant')->middleware('guest');
     Route::post('/login', [TenantController::class, 'loginTenantPost'])->name('loginTenantPost')->middleware('guest');
-    Route::get('/dashboard', function () {
-
-                        $domain = tenant('domain');
-                
-                        return "<center><h1>$domain login page!</h1></center>";
-                
-                    });
+    Route::post('/logout', [AuthManager::class, 'logout'])->name('logoutTenant');    
+    Route::get('/dashboard', [Dashboard::class, 'viewTenantDashboard'])->name('tenantDashboard');
 });
-
-
-// Route::group(['middleware' => 'web',
-// InitializeTenancyByDomain::class,
-// PreventAccessFromCentralDomains::class,
-// ], function () {
-//     Route::get('/', function () {
-
-//                 $domain = tenant('domain');
-        
-//                 return "<center><h1>$domain login page!</h1></center>";
-        
-//             });
-//     // Route::get('/', [AuthManager::class, 'loginTenant'])->name('login')->middleware('guest');
-//     // Route::post('/', [AuthManager::class, 'loginPost'])->name('loginPost')->middleware('guest');
-//     // Route::get('/google', [GoogleController::class, 'loginWithGoogle'])->name('google');
-//     // Route::any('/google/callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
-//     // Route::post('/logout', [AuthManager::class, 'logout'])->name('logout');
-// });

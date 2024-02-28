@@ -84,7 +84,8 @@ class TenantController extends Controller
             // Insert tenant_admin to the newly created database
             config(['database.connections.new.database' => $connection]);
             $tenantConnection = DB::connection('new');
-            $tenantConnection->table('users')->insert([
+        
+            $insertUser = User::on('new')->create([
                 'first_name' => $user->first_name,
                 'middle_name' => $user->middle_name,
                 'last_name' => $user->last_name,
@@ -121,7 +122,7 @@ class TenantController extends Controller
         $domain = tenant('domain');
         $tenant = Tenant::where('domain', $domain)->first();
         $connection = "tenant" . $tenant->database;
-
+        
         config(['database.connections.new.database' => $connection]);
         $tenantConnection = DB::connection('new');
 
@@ -134,9 +135,9 @@ class TenantController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            dd("valid");
-            // session(['user' => $user]);
-            // return redirect()->intended('dashboard');
+            // dd("valid");
+            session(['user' => $user]);
+            return redirect()->intended(route('tenantDashboard'));
         } else {
             return redirect(route('loginTenant'))->with("error", "Invalid username or password!");
         }
