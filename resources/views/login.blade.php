@@ -8,7 +8,7 @@
 <body>
 
     <main>
-        <div class="container">            
+        <div class="container">
 
             <section
                 class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
@@ -17,10 +17,17 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="index.html" class="logo-login d-flex align-items-center w-auto">
-                                    @if(isset($tenant))
-                                        <center><h2>{{ strtoupper($tenant) }}</h2></center>
+                                <a href="#" class="logo-login d-flex align-items-center w-auto">
+                                    @if (isset($tenant))
+                                        <center>
+                                            {{-- Tenant Logo --}}
+                                            <div>
+                                                {{-- <img src="{{ $tenant->logo }}" alt="logo" class="login-img"> --}}
+                                            </div>
+                                            <img src="assets/img/logo.png" alt="">
+                                        </center>
                                     @else
+                                            {{-- Main Logo --}}
                                         <img src="assets/img/logo.png" alt="">
                                     @endif
                                 </a>
@@ -32,14 +39,22 @@
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
+                                        <!-- Logo -->
+                                        @if (isset($tenant))
+                                        <div class="d-flex justify-content-center">
+                                            <img src="/assets/img/logo.png" class="login-img" alt="dormy-logo">
+                                        </div>
+                                        @endif
+                                        <!-- Title and Description -->
                                         <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
 
-                                    <form action="{{ (isset($tenant) ? route('loginTenantPost') : route('login')) }}" method="POST" class="row g-3 needs-validation"
-                                        novalidate>
+
+                                    <form action="{{ isset($tenant) ? route('loginTenantPost') : route('login') }}"
+                                        method="POST" class="row g-3 needs-validation" novalidate>
                                         @csrf
-                                         <div class="col-12">
+                                        <div class="col-12">
                                             <label for="yourUsername" class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>

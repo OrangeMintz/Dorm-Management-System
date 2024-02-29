@@ -17,22 +17,33 @@
                             Please enter a tenant name.
                         </div>
                     </div>
-
+                    
                     <div class="col-md-6">
+                        <label for="tenant_logo" class="form-label">Logo</label>
+                        <input class="form-control" type="file" id="tenant_logo" accept="image/*">
+                        <div class="invalid-feedback">
+                            Please upload a tenant logo.
+                        </div>
+                    </div>                    
+
+                    <div class="col-md-12">
                         <label for="domain" class="form-label">Domain</label>
-                        <div class="input-group">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">dormy.</span>
                             <input type="text" name="domain" class="form-control" placeholder="yourdomain"
-                                aria-label="Recipient's username" aria-describedby="domain" required>
-                            <span class="input-group-text" id="domain">.dormy.com</span>
+                                aria-label="Recipient's username" aria-describedby="domain" required> <span
+                                class="input-group-text">.localhost:8000</span>
                             <div class="invalid-feedback">
                                 Please provide a valid domain name.
                             </div>
                         </div>
                     </div>
 
+
                     <div class="col-md-6" class="input-field">
                         <label for="tenant_admin" class="form-label">Tenant Admin</label>
-                        <input type="text" class="form-control typeahead" name="tenant_admin" id="tenant_admin_in_tenant" required>
+                        <input type="text" class="form-control typeahead" name="tenant_admin"
+                            id="tenant_admin_in_tenant" required>
                         <div class="invalid-feedback">
                             Please select an admin for this tenant.
                         </div>
